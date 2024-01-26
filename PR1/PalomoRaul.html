@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="PalomoRaul.css">
+    <title>Contrasenya Segura</title>
+</head>
+<body>
+    <div id="div" class="caja">
+        <h2>Contrasenya:</h2>
+        <button id="show" class="buttonShow" onclick="show()"><img id="icon" src="img\ojoCerrado.png"></button>
+        <input type="password" id="password" name="fname">
+       
+        <button class="button" onclick="check()">Check</button>
+        <p id="checkLength">Ha de contenir entre 8 i 20 caràcters</p>
+        <p id="checkMajusMinus">Ha de contenir com a mínim 2 minúscules i 1 majúscula</p>
+        <p id="checkNumber">Ha de contenir com a mínim 1 dígit</p>
+        <p id="checkVoid">No hi poden haver espais en blanc</p>
+        <p id="checkThreeRow">No hi poden haver 3 caràcters seguits iguals</p>
+        <p id="checkSpecialChar">Ha de contenir com a mínim 1 caràcter especial: [!¡?¿=()/&%$·#@|ºª`^*+[]¨{}_-.:,;']</p>
+    </div>
+    <div id="MsgContraSegura" class="Msg">
+        <h3>CONTRASENYA 100% SEGURA</h3>
+    </div>
+    <script src="PalomoRaul.js">
+       
+    </script>
+</body>
+</html>
+

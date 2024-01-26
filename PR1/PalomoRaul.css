@@ -1,0 +1,62 @@
+
+body{
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    background: linear-gradient(to right, red , yellow);
+    height: 85vh;
+}
+img{
+    width:100%;
+}
+div {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: auto;
+    width: 300px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+}
+
+
+.Msg{
+    display:none;
+}
+
+button:hover{
+    transform: scale(1.1); 
+    background-color: coral;
+    transition: background-color 1s;
+}
+.button{
+    align-self: flex-end;
+    width: 20%;
+    margin: 5px;
+}
+
+.buttonShow{
+    border:none;
+    align-self: flex-end;
+    width: 13%;
+    margin: 5px;
+}
+
+
+
+h2{
+    font-family: sans-serif;
+    color:coral;
+    font-weight: 800;
+    margin-bottom: 30px;
+    margin-top: 30px ;  
+}
+
+
+h3{
+    text-align: center;
+    width:100%;
+    font-size: 40px;
+}
