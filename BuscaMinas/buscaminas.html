@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Buscaminas</title>
+</head>
+
+<body>
+    <label for="cols">Columnes: </label>
+    <input id="cols"></input>
+    <label for="rows">Files: </label>
+    <input id="rows"></input>
+    <label for="mines">Mines: </label>
+    <input id="mines"></input>
+    <button id="submit" type="submit">Crea Taulell</button>
+    <div id="taula"></div>
+    <script>
+        document.getElementById("submit").addEventListener("click", function (getTablero) {
+            let tablero=new Tablero;
+            tablero.generarTablero();
+        })
+
+        class Tablero {
+            constructor(rows, cols, mines) {
+                this.rows = rows;
+                this.cols = cols;
+                this.mines = mines;
+            }
+            generarTablero() {
+                let cols = document.getElementById("cols").value;
+                let rows = document.getElementById("rows").value;
+                let mines = document.getElementById("mines").value;
+                let toValidate = cols + rows + mines;
+                let correct = true;
+                let ABC = "qwertyuiopasdfghjklñzxcvbnmç?¡¿'^`*+[]{}¨´-_:;/()$%&·#!"
+                toValidate = toValidate.toLowerCase();
+                for (let i = 0; i < toValidate.length; i++) {
+
+                    if (ABC.includes(toValidate[i])) {
+
+                        correct = false;
+
+                    }
+                }
+                if (!correct) {
+                    alert("Los campos no pueden ser nulos ni permiten letras o caràcteres especiales")
+                    
+                }
+                else{
+                    for(let i=0;i<rows;i++){
+                        for(let j=0;j<cols;j++){
+                            let div= document.createElement("div")
+                            document.getElementById("taula").appendChild(div)
+                            console.log(div);
+                        }
+                    }
+                }
+                console.log(correct);
+            }
+        }
+        class Casilla{
+            constructor(x,y,mina,marcada,revelada,bandera,minasAdyacentes){
+                this.x=x;
+                this.y=y;
+                this.mina=mina;
+                this.marcada=marcada;
+                this.revelada=revelada;
+                this.bandera=bandera;
+                this.minasAdyacentes=minasAdyacentes;
+            }
+        }
+    </script>
+</body>
+
+</html>
