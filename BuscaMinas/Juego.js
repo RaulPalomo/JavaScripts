@@ -20,6 +20,7 @@ document.getElementById("submit").addEventListener("click", function (getTablero
     }
     else {
         let tablero = new Tablero(rows, cols, mines);
+        tablero.colocarBombas();
         pintarTablero(tablero);
         
     }
@@ -40,14 +41,23 @@ function pintarTablero(tablero){
     //celda.addEventListener(clik)
     for(let i=0; i<tablero.rows;i++){
         let fila = document.createElement("div")
-        
+        fila.style.display="flex";
         for(let j=0; j<tablero.cols;j++){
             let celda =document.createElement("div")
+            celda.style.width=25+"px"
+            celda.style.height=25+"px"
+            celda.style.backgroundColor="lightgreen"
+            celda.style.margin=2+"px"
             
-            celda.innerHTML+="a"
+
+            celda.addEventListener("click",function(callCelda){
+                console.log("aaaaaaaaaa")
+
+            })
             fila.appendChild(celda);
         }
         taula.appendChild(fila)
+
     }
 
 
