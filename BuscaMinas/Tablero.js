@@ -73,69 +73,97 @@ class Tablero {
 
     }
     calcCaso(i, j) {
-        console.log("aaaaaa")
-        if (i == 0 && j == 0) {
-            console.log("a")
-            this.matriz[i + 1][j].minasAdyacentes++
-            this.matriz[i][j + 1].minasAdyacentes++
-            this.matriz[i + 1][j + 1].minasAdyacentes++
-        }
-        else if (i == 0 && j == this.cols - 1) {
-            console.log("b")
-            this.matriz[i + 1][j].minasAdyacentes++
-            this.matriz[i + 1][j - 1].minasAdyacentes++
-            this.matriz[i][j - 1].minasAdyacentes++
-        }
-        else if (i == this.rows - 1 && j == 0) {
-            console.log("c")
-            this.matriz[i - 1][j].minasAdyacentes++
-            this.matriz[i - 1][j + 1].minasAdyacentes++
-            this.matriz[i][j + 1].minasAdyacentes++
-        }
-        else if (i == this.rows - 1 && j == this.cols - 1) {
-            console.log("d")
-            this.matriz[i - 1][j].minasAdyacentes++
-            this.matriz[i - 1][j - 1].minasAdyacentes++
-            this.matriz[i][j - 1].minasAdyacentes++
-        }
-        else if (i==0){
-            this.matriz[i][j+1].minasAdyacentes++
-            this.matriz[i][j-1].minasAdyacentes++
-            this.matriz[i+1][j+1].minasAdyacentes++
-            this.matriz[i+1][j-1].minasAdyacentes++
-            this.matriz[i+1][j].minasAdyacentes++
-        }
-        else if (i==this.rows-1){
-            this.matriz[i][j-1].minasAdyacentes++
-            this.matriz[i][j+1].minasAdyacentes++
-            this.matriz[i-1][j-1].minasAdyacentes++
-            this.matriz[i-1][j+1].minasAdyacentes++
-            this.matriz[i-1][j].minasAdyacentes++
-        }
-        else if (j==0){
-            this.matriz[i][j+1].minasAdyacentes++
-            this.matriz[i+1][j+1].minasAdyacentes++
-            this.matriz[i+1][j].minasAdyacentes++
-            this.matriz[i-1][j+1].minasAdyacentes++
-            this.matriz[i-1][j].minasAdyacentes++
-        }
-        else if (j== this.cols-1){
-            this.matriz[i][j-1].minasAdyacentes++
-            this.matriz[i+1][j-1].minasAdyacentes++
-            this.matriz[i+1][j].minasAdyacentes++
-            this.matriz[i-1][j-1].minasAdyacentes++
-            this.matriz[i-1][j].minasAdyacentes++
-        }
-        else{
-            this.matriz[i][j-1].minasAdyacentes++
-            this.matriz[i+1][j-1].minasAdyacentes++
-            this.matriz[i+1][j].minasAdyacentes++
-            this.matriz[i-1][j-1].minasAdyacentes++
-            this.matriz[i-1][j].minasAdyacentes++
-            this.matriz[i][j+1].minasAdyacentes++
-            this.matriz[i+1][j+1].minasAdyacentes++
-            this.matriz[i-1][j+1].minasAdyacentes++
-        }
+        
+            if (i > 0 && j > 0) {
+                this.matriz[i - 1][j - 1].minasAdyacentes++;
+            }
+            if (i > 0) {
+                this.matriz[i - 1][j].minasAdyacentes++;
+            }
+            if (i > 0 && j < this.cols - 1) {
+                this.matriz[i - 1][j + 1].minasAdyacentes++;
+            }
+            if (j > 0) {
+                this.matriz[i][j - 1].minasAdyacentes++;
+            }
+            if (j < this.cols - 1) {
+                this.matriz[i][j + 1].minasAdyacentes++;
+            }
+            if (i < this.rows - 1 && j > 0) {
+                this.matriz[i + 1][j - 1].minasAdyacentes++;
+            }
+            if (i < this.rows - 1) {
+                this.matriz[i + 1][j].minasAdyacentes++;
+            }
+            if (i < this.rows - 1 && j < this.cols - 1) {
+                this.matriz[i + 1][j + 1].minasAdyacentes++;
+            }
+        
     }
+    /* Solució anterior:
+    console.log("aaaaaa")
+    if (i == 0 && j == 0) {
+        console.log("a")
+        this.matriz[i + 1][j].minasAdyacentes++
+        this.matriz[i][j + 1].minasAdyacentes++
+        this.matriz[i + 1][j + 1].minasAdyacentes++
+    }
+    else if (i == 0 && j == this.cols - 1) {
+        console.log("b")
+        this.matriz[i + 1][j].minasAdyacentes++
+        this.matriz[i + 1][j - 1].minasAdyacentes++
+        this.matriz[i][j - 1].minasAdyacentes++
+    }
+    else if (i == this.rows - 1 && j == 0) {
+        console.log("c")
+        this.matriz[i - 1][j].minasAdyacentes++
+        this.matriz[i - 1][j + 1].minasAdyacentes++
+        this.matriz[i][j + 1].minasAdyacentes++
+    }
+    else if (i == this.rows - 1 && j == this.cols - 1) {
+        console.log("d")
+        this.matriz[i - 1][j].minasAdyacentes++
+        this.matriz[i - 1][j - 1].minasAdyacentes++
+        this.matriz[i][j - 1].minasAdyacentes++
+    }
+    else if (i==0){
+        this.matriz[i][j+1].minasAdyacentes++
+        this.matriz[i][j-1].minasAdyacentes++
+        this.matriz[i+1][j+1].minasAdyacentes++
+        this.matriz[i+1][j-1].minasAdyacentes++
+        this.matriz[i+1][j].minasAdyacentes++
+    }
+    else if (i==this.rows-1){
+        this.matriz[i][j-1].minasAdyacentes++
+        this.matriz[i][j+1].minasAdyacentes++
+        this.matriz[i-1][j-1].minasAdyacentes++
+        this.matriz[i-1][j+1].minasAdyacentes++
+        this.matriz[i-1][j].minasAdyacentes++
+    }
+    else if (j==0){
+        this.matriz[i][j+1].minasAdyacentes++
+        this.matriz[i+1][j+1].minasAdyacentes++
+        this.matriz[i+1][j].minasAdyacentes++
+        this.matriz[i-1][j+1].minasAdyacentes++
+        this.matriz[i-1][j].minasAdyacentes++
+    }
+    else if (j== this.cols-1){
+        this.matriz[i][j-1].minasAdyacentes++
+        this.matriz[i+1][j-1].minasAdyacentes++
+        this.matriz[i+1][j].minasAdyacentes++
+        this.matriz[i-1][j-1].minasAdyacentes++
+        this.matriz[i-1][j].minasAdyacentes++
+    }
+    else{
+        this.matriz[i][j-1].minasAdyacentes++
+        this.matriz[i+1][j-1].minasAdyacentes++
+        this.matriz[i+1][j].minasAdyacentes++
+        this.matriz[i-1][j-1].minasAdyacentes++
+        this.matriz[i-1][j].minasAdyacentes++
+        this.matriz[i][j+1].minasAdyacentes++
+        this.matriz[i+1][j+1].minasAdyacentes++
+        this.matriz[i-1][j+1].minasAdyacentes++
+    }
+}*/
 
 }
