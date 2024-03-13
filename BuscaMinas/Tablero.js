@@ -45,18 +45,44 @@ class Tablero {
         
     }
     calcularAdyacentes(){
+        
         for (let i = 0; i < this.rows; i++) {
             
             
             for (let j = 0; j < this.cols; j++) {
-                if(this.matrix[i][j].mina==1){
-                    if(this.matrix[i]==0&&this.matrix[j]==0){
-                        this.matrix[i-1][j].minasAdyacentes++
+                
+                if(this.matriz[i][j].mina==1){
+                    
+                    if(this.matriz[i]==0&&this.matriz[j]==0){
+                        this.matriz[i+1][j].minasAdyacentes+1
+                        this.matriz[i][j+1].minasAdyacentes+1
+                        this.matriz[i+1][j+1].minasAdyacentes+1
                     }
+                    else if(this.matriz[i]==0&&this.matriz[j]==this.cols){
+                        this.matriz[i+1][j].minasAdyacentes+1
+                        this.matriz[i+1][j-1].minasAdyacentes+1
+                        this.matriz[i][j-1].minasAdyacentes+1
+                    }
+                    else if(this.matriz[i]==this.rows&&this.matriz[j]==0){
+                        this.matriz[i-1][j].minasAdyacentes+1
+                        this.matriz[i-1][j+1].minasAdyacentes+1
+                        this.matriz[i][j+1].minasAdyacentes+1
+                    }
+                    else if(this.matriz[i]==this.rows&&this.matriz[j]==this.cols){
+                        this.matriz[i-1][j].minasAdyacentes+1
+                        this.matriz[i-1][j+1].minasAdyacentes+1
+                        this.matriz[i][j-1].minasAdyacentes+1 
+                    }
+
                 }
-              
+                console.log(i +""+j)
             }
             
         }
+        console.log(this.matriz[0][0].minasAdyacentes)
+        console.log(this.matriz[0][1].minasAdyacentes)
+        console.log(this.matriz[1][1].minasAdyacentes)
+        console.log(this.matriz[1][0].minasAdyacentes)
     }
+    
 }

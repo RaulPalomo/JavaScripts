@@ -21,6 +21,7 @@ document.getElementById("submit").addEventListener("click", function (getTablero
     else {
         let tablero = new Tablero(rows, cols, mines);
         tablero.colocarBombas();
+        tablero.calcularAdyacentes();
         pintarTablero(tablero);
         
     }
