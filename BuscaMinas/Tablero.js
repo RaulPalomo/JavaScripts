@@ -7,82 +7,135 @@ class Tablero {
         this.matriz = this.generarTablero();
     }
     generarTablero() {
-        
-        let matrizTablero= [];
-        
+
+        let matrizTablero = [];
+
         for (let i = 0; i < this.rows; i++) {
-            
+
             let fila = []
-            
+
             for (let j = 0; j < this.cols; j++) {
-                
-                let casilla=new Casilla(i,j,0,false,false,false,0)
-                
+
+                let casilla = new Casilla(i, j, 0, false, false, false, 0)
+
                 fila.push(casilla)
-                console.log("casilla: "+casilla.x+casilla.y)
+                console.log("casilla: " + casilla.x + casilla.y)
             }
             matrizTablero.push(fila)
-            
+
         }
         return matrizTablero;
 
     }
-    colocarBombas(){
-        for(let i=0; i<this.mines; i++){
+    colocarBombas() {
+        for (let i = 0; i < this.mines; i++) {
 
-            var x= Math.floor(Math.random()*this.rows);
-            var y= Math.floor(Math.random()*this.cols);
+            var x = Math.floor(Math.random() * this.rows);
+            var y = Math.floor(Math.random() * this.cols);
 
-            if(this.matriz[x][y].mina==0){
-                
+            if (this.matriz[x][y].mina == 0) {
+
                 this.matriz[x][y].mina++;
 
             }
-            else{
+            else {
                 i--;
-            }  
+            }
         }
-        
+
     }
-    calcularAdyacentes(){
-        
+    calcularAdyacentes() {
+
         for (let i = 0; i < this.rows; i++) {
-            
-            
+
+
             for (let j = 0; j < this.cols; j++) {
-                
-                if(this.matriz[i][j].mina==1){
-                    
-                    if(this.matriz[i]==0&&this.matriz[j]==0){
-                        this.matriz[i+1][j].minasAdyacentes+1
-                        this.matriz[i][j+1].minasAdyacentes+1
-                        this.matriz[i+1][j+1].minasAdyacentes+1
-                    }
-                    else if(this.matriz[i]==0&&this.matriz[j]==this.cols){
-                        this.matriz[i+1][j].minasAdyacentes+1
-                        this.matriz[i+1][j-1].minasAdyacentes+1
-                        this.matriz[i][j-1].minasAdyacentes+1
-                    }
-                    else if(this.matriz[i]==this.rows&&this.matriz[j]==0){
-                        this.matriz[i-1][j].minasAdyacentes+1
-                        this.matriz[i-1][j+1].minasAdyacentes+1
-                        this.matriz[i][j+1].minasAdyacentes+1
-                    }
-                    else if(this.matriz[i]==this.rows&&this.matriz[j]==this.cols){
-                        this.matriz[i-1][j].minasAdyacentes+1
-                        this.matriz[i-1][j+1].minasAdyacentes+1
-                        this.matriz[i][j-1].minasAdyacentes+1 
-                    }
+
+                if (this.matriz[i][j].mina == 1) {
+                    this.calcCaso(i, j);
 
                 }
-                console.log(i +""+j)
+
             }
-            
+
         }
-        console.log(this.matriz[0][0].minasAdyacentes)
-        console.log(this.matriz[0][1].minasAdyacentes)
-        console.log(this.matriz[1][1].minasAdyacentes)
-        console.log(this.matriz[1][0].minasAdyacentes)
+
+
+        for (let i = 0; i < this.rows; i++) {
+
+
+            for (let j = 0; j < this.cols; j++) {
+
+
+                console.log(this.matriz[i][j].minasAdyacentes)
+            }
+        }
+
     }
-    
+    calcCaso(i, j) {
+        console.log("aaaaaa")
+        if (i == 0 && j == 0) {
+            console.log("a")
+            this.matriz[i + 1][j].minasAdyacentes++
+            this.matriz[i][j + 1].minasAdyacentes++
+            this.matriz[i + 1][j + 1].minasAdyacentes++
+        }
+        else if (i == 0 && j == this.cols - 1) {
+            console.log("b")
+            this.matriz[i + 1][j].minasAdyacentes++
+            this.matriz[i + 1][j - 1].minasAdyacentes++
+            this.matriz[i][j - 1].minasAdyacentes++
+        }
+        else if (i == this.rows - 1 && j == 0) {
+            console.log("c")
+            this.matriz[i - 1][j].minasAdyacentes++
+            this.matriz[i - 1][j + 1].minasAdyacentes++
+            this.matriz[i][j + 1].minasAdyacentes++
+        }
+        else if (i == this.rows - 1 && j == this.cols - 1) {
+            console.log("d")
+            this.matriz[i - 1][j].minasAdyacentes++
+            this.matriz[i - 1][j - 1].minasAdyacentes++
+            this.matriz[i][j - 1].minasAdyacentes++
+        }
+        else if (i==0){
+            this.matriz[i][j+1].minasAdyacentes++
+            this.matriz[i][j-1].minasAdyacentes++
+            this.matriz[i+1][j+1].minasAdyacentes++
+            this.matriz[i+1][j-1].minasAdyacentes++
+            this.matriz[i+1][j].minasAdyacentes++
+        }
+        else if (i==this.rows-1){
+            this.matriz[i][j-1].minasAdyacentes++
+            this.matriz[i][j+1].minasAdyacentes++
+            this.matriz[i-1][j-1].minasAdyacentes++
+            this.matriz[i-1][j+1].minasAdyacentes++
+            this.matriz[i-1][j].minasAdyacentes++
+        }
+        else if (j==0){
+            this.matriz[i][j+1].minasAdyacentes++
+            this.matriz[i+1][j+1].minasAdyacentes++
+            this.matriz[i+1][j].minasAdyacentes++
+            this.matriz[i-1][j+1].minasAdyacentes++
+            this.matriz[i-1][j].minasAdyacentes++
+        }
+        else if (j== this.cols-1){
+            this.matriz[i][j-1].minasAdyacentes++
+            this.matriz[i+1][j-1].minasAdyacentes++
+            this.matriz[i+1][j].minasAdyacentes++
+            this.matriz[i-1][j-1].minasAdyacentes++
+            this.matriz[i-1][j].minasAdyacentes++
+        }
+        else{
+            this.matriz[i][j-1].minasAdyacentes++
+            this.matriz[i+1][j-1].minasAdyacentes++
+            this.matriz[i+1][j].minasAdyacentes++
+            this.matriz[i-1][j-1].minasAdyacentes++
+            this.matriz[i-1][j].minasAdyacentes++
+            this.matriz[i][j+1].minasAdyacentes++
+            this.matriz[i+1][j+1].minasAdyacentes++
+            this.matriz[i-1][j+1].minasAdyacentes++
+        }
+    }
+
 }

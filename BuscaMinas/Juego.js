@@ -32,7 +32,7 @@ document.getElementById("submit").addEventListener("click", function (getTablero
 
 function pintarTablero(tablero){
     let taula = document.getElementById("taula");
-
+    taula.innerHTML="";
     //for(let i = hasta tablero.X)
     //crea en DOm una div
     //for(j hasta tablero.y)
@@ -53,6 +53,7 @@ function pintarTablero(tablero){
 
             celda.addEventListener("click",function(callCelda){
                 console.log("aaaaaaaaaa")
+                console.log()
 
             })
             fila.appendChild(celda);
