@@ -47,7 +47,7 @@ function pintarTablero(tablero){
             let celda =document.createElement("div")
             celda.style.width=25+"px"
             celda.style.height=25+"px"
-            celda.style.backgroundColor="lightgreen"
+            celda.style.backgroundColor="green"
             celda.style.margin=2+"px"
             celda.id= "casilla"+i +j
             console.log(celda.id)
@@ -78,7 +78,18 @@ function ActualizaTabla(tablero){
     for(let i=0;i<tablero.rows; i++){
         for(let j=0;j<tablero.cols; j++){
             if(tablero.matriz[i][j].revelada==true){
-                document.getElementById("casilla"+i+j).style.backgroundColor="red";
+                if(tablero.matriz[i][j].mina==1){
+                    document.getElementById("casilla"+i+j).style.backgroundColor="red";
+                }
+                else if(tablero.matriz[i][j].minasAdyacentes==0){
+                    document.getElementById("casilla"+i+j).style.backgroundColor="lightskyblue";
+                }
+                else{
+                    document.getElementById("casilla"+i+j).style.backgroundColor="lightgreen";
+                    document.getElementById("casilla"+i+j).innerHTML=tablero.matriz[i][j].minasAdyacentes
+                    document.getElementById("casilla"+i+j).style.textAlign="center"
+                    document.getElementById("casilla"+i+j).style.alignItems="center"
+                }
             }
         }
     }

@@ -45,7 +45,7 @@ class Tablero {
 
     }
     calcularAdyacentes() {
-        
+
         for (let i = 0; i < this.rows; i++) {
 
 
@@ -72,69 +72,71 @@ class Tablero {
         }
 
     }
-    DestaparCasilla(i,j){
-        console.log("aaaa")
-        console.log(this.matriz[i][j])
-        this.matriz[i][j].Revelar()
-        if(this.matriz[i][j].minasAdyacentes==0&& this.matriz[i][j].mina==0){
-            if (i > 0 && j > 0) {
-                this.DestaparCasilla(i-1,j-1);
-            }
-            if (i > 0) {
-                this.DestaparCasilla(i-1,j);
-            }
-            if (i > 0 && j < this.cols - 1) {
-                this.DestaparCasilla(i-1,j+1);
-            }
-            if (j > 0) {
-                this.DestaparCasilla(i,j-1);
-            }
-            if (j < this.cols - 1) {
-                this.DestaparCasilla(i,j+1);
-            }
-            if (i < this.rows - 1 && j > 0) {
-                this.DestaparCasilla(i+1,j-1);
-            }
-            if (i < this.rows - 1) {
-                this.DestaparCasilla(i+1,j);
-            }
-            if (i < this.rows - 1 && j < this.cols - 1) {
-                this.DestaparCasilla(i+1,j+1);
-            }
-        else{
-
+    DestaparCasilla(i, j) {
+        console.log("recursive "+this.matriz[i][j].minasAdyacentes)
+        
+        if (this.matriz[i][j].mina == 1) {
+            alert("BOOOOMBAAAAAAAAA")
         }
+        else if (this.matriz[i][j].minasAdyacentes == 0) {
+            this.matriz[i][j].Revelar()
+            if (i > 0 && j > 0&&this.matriz[i-1][j-1].revelada==false) {
+                this.DestaparCasilla(i - 1, j - 1);
+            }
+            if (i > 0&&this.matriz[i-1][j].revelada==false) {
+                this.DestaparCasilla(i - 1, j);
+            }
+            if (i > 0 && j < this.cols - 1&&this.matriz[i][j+1].revelada==false) {
+                this.DestaparCasilla(i - 1, j + 1);
+            }
+            if (j > 0&&this.matriz[i][j-1].revelada==false) {
+                this.DestaparCasilla(i, j - 1);
+            }
+            if (j < this.cols - 1&&this.matriz[i][j+1].revelada==false) {
+                this.DestaparCasilla(i, j + 1);
+            }
+            if (i < this.rows - 1 && j > 0&&this.matriz[i+1][j-1].revelada==false) {
+                this.DestaparCasilla(i + 1, j - 1);
+            }
+            if (i < this.rows - 1&&this.matriz[i+1][j].revelada==false) {
+                this.DestaparCasilla(i + 1, j);
+            }
+            if (i < this.rows - 1 && j < this.cols - 1&&this.matriz[i+1][j+1].revelada==false) {
+                this.DestaparCasilla(i + 1, j + 1);
+            }
+            
+        }
+        else if (this.matriz[i][j].minasAdyacentes>0){
+            this.matriz[i][j].Revelar()
         }
     }
     calcCaso(i, j) {
-        
-            if (i > 0 && j > 0) {
-                this.matriz[i - 1][j - 1].minasAdyacentes++;
-            }
-            if (i > 0) {
-                this.matriz[i - 1][j].minasAdyacentes++;
-            }
-            if (i > 0 && j < this.cols - 1) {
-                this.matriz[i - 1][j + 1].minasAdyacentes++;
-            }
-            if (j > 0) {
-                this.matriz[i][j - 1].minasAdyacentes++;
-            }
-            if (j < this.cols - 1) {
-                this.matriz[i][j + 1].minasAdyacentes++;
-            }
-            if (i < this.rows - 1 && j > 0) {
-                this.matriz[i + 1][j - 1].minasAdyacentes++;
-            }
-            if (i < this.rows - 1) {
-                this.matriz[i + 1][j].minasAdyacentes++;
-            }
-            if (i < this.rows - 1 && j < this.cols - 1) {
-                this.matriz[i + 1][j + 1].minasAdyacentes++;
-            }
-        
-    }
-    /* Solució anterior:
+
+        if (i > 0 && j > 0) {
+            this.matriz[i - 1][j - 1].minasAdyacentes++;
+        }
+        if (i > 0) {
+            this.matriz[i - 1][j].minasAdyacentes++;
+        }
+        if (i > 0 && j < this.cols - 1) {
+            this.matriz[i - 1][j + 1].minasAdyacentes++;
+        }
+        if (j > 0) {
+            this.matriz[i][j - 1].minasAdyacentes++;
+        }
+        if (j < this.cols - 1) {
+            this.matriz[i][j + 1].minasAdyacentes++;
+        }
+        if (i < this.rows - 1 && j > 0) {
+            this.matriz[i + 1][j - 1].minasAdyacentes++;
+        }
+        if (i < this.rows - 1) {
+            this.matriz[i + 1][j].minasAdyacentes++;
+        }
+        if (i < this.rows - 1 && j < this.cols - 1) {
+            this.matriz[i + 1][j + 1].minasAdyacentes++;
+        }
+        /* Solució anterior:
     console.log("aaaaaa")
     if (i == 0 && j == 0) {
         console.log("a")
@@ -199,5 +201,7 @@ class Tablero {
         this.matriz[i-1][j+1].minasAdyacentes++
     }
 }*/
+    }
+
 
 }
