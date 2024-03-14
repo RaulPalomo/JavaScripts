@@ -45,7 +45,7 @@ class Tablero {
 
     }
     calcularAdyacentes() {
-
+        
         for (let i = 0; i < this.rows; i++) {
 
 
@@ -71,6 +71,40 @@ class Tablero {
             }
         }
 
+    }
+    DestaparCasilla(i,j){
+        console.log("aaaa")
+        console.log(this.matriz[i][j])
+        this.matriz[i][j].Revelar()
+        if(this.matriz[i][j].minasAdyacentes==0&& this.matriz[i][j].mina==0){
+            if (i > 0 && j > 0) {
+                this.DestaparCasilla(i-1,j-1);
+            }
+            if (i > 0) {
+                this.DestaparCasilla(i-1,j);
+            }
+            if (i > 0 && j < this.cols - 1) {
+                this.DestaparCasilla(i-1,j+1);
+            }
+            if (j > 0) {
+                this.DestaparCasilla(i,j-1);
+            }
+            if (j < this.cols - 1) {
+                this.DestaparCasilla(i,j+1);
+            }
+            if (i < this.rows - 1 && j > 0) {
+                this.DestaparCasilla(i+1,j-1);
+            }
+            if (i < this.rows - 1) {
+                this.DestaparCasilla(i+1,j);
+            }
+            if (i < this.rows - 1 && j < this.cols - 1) {
+                this.DestaparCasilla(i+1,j+1);
+            }
+        else{
+
+        }
+        }
     }
     calcCaso(i, j) {
         

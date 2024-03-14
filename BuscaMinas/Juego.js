@@ -49,12 +49,21 @@ function pintarTablero(tablero){
             celda.style.height=25+"px"
             celda.style.backgroundColor="lightgreen"
             celda.style.margin=2+"px"
-            
+            celda.id= "casilla"+i +j
+            console.log(celda.id)
 
             celda.addEventListener("click",function(callCelda){
-                console.log("aaaaaaaaaa")
-                console.log()
-
+                for(let i=0;i<tablero.rows; i++){
+                    for(let j=0;j<tablero.cols; j++){
+                        if(celda.id=="casilla"+i+j){
+                            console.log(celda.id)
+                            console.log(tablero.matriz[i][j])
+                            tablero.DestaparCasilla(i,j);
+                            ActualizaTabla(tablero)
+                        }
+                    }
+                }
+                
             })
             fila.appendChild(celda);
         }
@@ -63,4 +72,14 @@ function pintarTablero(tablero){
     }
 
 
+}
+function ActualizaTabla(tablero){
+    console.log("actualiza")
+    for(let i=0;i<tablero.rows; i++){
+        for(let j=0;j<tablero.cols; j++){
+            if(tablero.matriz[i][j].revelada==true){
+                document.getElementById("casilla"+i+j).style.backgroundColor="red";
+            }
+        }
+    }
 }

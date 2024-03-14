@@ -11,4 +11,11 @@ class Casilla {
     set marca(marcada){
         this.marcada=marcada;
     }
+    Revelar(){
+        console.log("eeeee")
+        
+        this.revelada=true
+
+        
+    }
 }
