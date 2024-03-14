@@ -55,7 +55,7 @@ function pintarTablero(tablero){
             celda.addEventListener("click",function(callCelda){
                 for(let i=0;i<tablero.rows; i++){
                     for(let j=0;j<tablero.cols; j++){
-                        if(celda.id=="casilla"+i+"x"+j+"y"){
+                        if(celda.id=="casilla"+i+"x"+j+"y"&&tablero.matriz[i][j].revelada==false&&tablero.matriz[i][j].marcada==false){
                             console.log(celda.id)
                             tablero.DestaparCasilla(i,j);
                             ActualizaTabla(tablero)
@@ -63,6 +63,18 @@ function pintarTablero(tablero){
                     }
                 }
                 
+            })
+            celda.addEventListener("contextmenu",function(callCelda){
+                console.log("bandera")
+                for(let i=0;i<tablero.rows; i++){
+                    for(let j=0;j<tablero.cols; j++){
+                        if(celda.id=="casilla"+i+"x"+j+"y"){
+                            tablero.matriz[i][j].Marcar()
+                            ActualizaTabla(tablero)
+                        }
+                    }
+                }
+                event.preventDefault()
             })
             fila.appendChild(celda);
         }
@@ -89,6 +101,12 @@ function ActualizaTabla(tablero){
                     document.getElementById("casilla"+i+"x"+j+"y").style.textAlign="center"
                     document.getElementById("casilla"+i+"x"+j+"y").style.alignItems="center"
                 }
+            }
+            else if(tablero.matriz[i][j].marcada==true){
+                document.getElementById("casilla"+i+"x"+j+"y").innerHTML="<img src=\"./img/bandera.png\" width=\"25 px\">"
+            }
+            else{
+                document.getElementById("casilla"+i+"x"+j+"y").innerHTML=""
             }
         }
     }

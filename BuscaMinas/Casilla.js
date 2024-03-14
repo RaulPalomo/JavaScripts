@@ -8,14 +8,28 @@ class Casilla {
         this.bandera = bandera;
         this.minasAdyacentes = minasAdyacentes;
     }
-    set marca(marcada){
-        this.marcada=marcada;
+    set marca(marcada) {
+        this.marcada = marcada;
     }
-    Revelar(){
-        
-        
-        this.revelada=true
+    Revelar() {
 
-        
+
+        this.revelada = true
+
+
+    }
+    Marcar() {
+        if (this.revelada == false) {
+            
+            if (this.marcada == false) {
+                this.marcada = true
+                console.log(this.marcada)
+            }
+            else{
+                this.marcada = false
+                console.log(this.marcada)
+            }
+            
+        }
     }
 }
