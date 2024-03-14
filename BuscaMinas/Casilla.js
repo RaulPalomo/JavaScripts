@@ -12,7 +12,7 @@ class Casilla {
         this.marcada=marcada;
     }
     Revelar(){
-        console.log("eeeee")
+        
         
         this.revelada=true
 

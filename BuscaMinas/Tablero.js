@@ -73,7 +73,7 @@ class Tablero {
 
     }
     DestaparCasilla(i, j) {
-        console.log("recursive "+this.matriz[i][j].minasAdyacentes)
+        
         
         if (this.matriz[i][j].mina == 1) {
             alert("BOOOOMBAAAAAAAAA")
