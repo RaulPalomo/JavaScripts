@@ -5,6 +5,7 @@ class Tablero {
         this.cols = cols;
         this.mines = mines;
         this.matriz = this.generarTablero();
+        this.finish =false;
     }
     generarTablero() {
 
@@ -73,53 +74,53 @@ class Tablero {
 
     }
     DestaparCasilla(i, j) {
-        
-        
+
+
         if (this.matriz[i][j].mina == 1) {
             this.matriz[i][j].Revelar()
-            for(let x=0;x<this.rows;x++){
-                for(let y=0;y<this.cols;y++){
-                    if(this.matriz[x][y].mina==1){
+            for (let x = 0; x < this.rows; x++) {
+                for (let y = 0; y < this.cols; y++) {
+                    if (this.matriz[x][y].mina == 1) {
+
+                        this.matriz[x][y].Revelar();
                         
-                            this.matriz[x][y].Revelar();
-                            ActualizaTabla(this.matriz);
-                         
-                        
+
+
                     }
                 }
             }
-            
+
             alert("BOOOOMBAAAAAAAAA")
         }
         else if (this.matriz[i][j].minasAdyacentes == 0) {
             this.matriz[i][j].Revelar()
-            if (i > 0 && j > 0&&this.matriz[i-1][j-1].revelada==false) {
+            if (i > 0 && j > 0 && this.matriz[i - 1][j - 1].revelada == false) {
                 this.DestaparCasilla(i - 1, j - 1);
             }
-            if (i > 0&&this.matriz[i-1][j].revelada==false) {
+            if (i > 0 && this.matriz[i - 1][j].revelada == false) {
                 this.DestaparCasilla(i - 1, j);
             }
-            if (i > 0 && j < this.cols - 1&&this.matriz[i][j+1].revelada==false) {
+            if (i > 0 && j < this.cols - 1 && this.matriz[i][j + 1].revelada == false) {
                 this.DestaparCasilla(i - 1, j + 1);
             }
-            if (j > 0&&this.matriz[i][j-1].revelada==false) {
+            if (j > 0 && this.matriz[i][j - 1].revelada == false) {
                 this.DestaparCasilla(i, j - 1);
             }
-            if (j < this.cols - 1&&this.matriz[i][j+1].revelada==false) {
+            if (j < this.cols - 1 && this.matriz[i][j + 1].revelada == false) {
                 this.DestaparCasilla(i, j + 1);
             }
-            if (i < this.rows - 1 && j > 0&&this.matriz[i+1][j-1].revelada==false) {
+            if (i < this.rows - 1 && j > 0 && this.matriz[i + 1][j - 1].revelada == false) {
                 this.DestaparCasilla(i + 1, j - 1);
             }
-            if (i < this.rows - 1&&this.matriz[i+1][j].revelada==false) {
+            if (i < this.rows - 1 && this.matriz[i + 1][j].revelada == false) {
                 this.DestaparCasilla(i + 1, j);
             }
-            if (i < this.rows - 1 && j < this.cols - 1&&this.matriz[i+1][j+1].revelada==false) {
+            if (i < this.rows - 1 && j < this.cols - 1 && this.matriz[i + 1][j + 1].revelada == false) {
                 this.DestaparCasilla(i + 1, j + 1);
             }
-            
+
         }
-        else if (this.matriz[i][j].minasAdyacentes>0){
+        else if (this.matriz[i][j].minasAdyacentes > 0) {
             this.matriz[i][j].Revelar()
         }
     }
@@ -149,71 +150,6 @@ class Tablero {
         if (i < this.rows - 1 && j < this.cols - 1) {
             this.matriz[i + 1][j + 1].minasAdyacentes++;
         }
-        /* Solució anterior:
-    console.log("aaaaaa")
-    if (i == 0 && j == 0) {
-        console.log("a")
-        this.matriz[i + 1][j].minasAdyacentes++
-        this.matriz[i][j + 1].minasAdyacentes++
-        this.matriz[i + 1][j + 1].minasAdyacentes++
-    }
-    else if (i == 0 && j == this.cols - 1) {
-        console.log("b")
-        this.matriz[i + 1][j].minasAdyacentes++
-        this.matriz[i + 1][j - 1].minasAdyacentes++
-        this.matriz[i][j - 1].minasAdyacentes++
-    }
-    else if (i == this.rows - 1 && j == 0) {
-        console.log("c")
-        this.matriz[i - 1][j].minasAdyacentes++
-        this.matriz[i - 1][j + 1].minasAdyacentes++
-        this.matriz[i][j + 1].minasAdyacentes++
-    }
-    else if (i == this.rows - 1 && j == this.cols - 1) {
-        console.log("d")
-        this.matriz[i - 1][j].minasAdyacentes++
-        this.matriz[i - 1][j - 1].minasAdyacentes++
-        this.matriz[i][j - 1].minasAdyacentes++
-    }
-    else if (i==0){
-        this.matriz[i][j+1].minasAdyacentes++
-        this.matriz[i][j-1].minasAdyacentes++
-        this.matriz[i+1][j+1].minasAdyacentes++
-        this.matriz[i+1][j-1].minasAdyacentes++
-        this.matriz[i+1][j].minasAdyacentes++
-    }
-    else if (i==this.rows-1){
-        this.matriz[i][j-1].minasAdyacentes++
-        this.matriz[i][j+1].minasAdyacentes++
-        this.matriz[i-1][j-1].minasAdyacentes++
-        this.matriz[i-1][j+1].minasAdyacentes++
-        this.matriz[i-1][j].minasAdyacentes++
-    }
-    else if (j==0){
-        this.matriz[i][j+1].minasAdyacentes++
-        this.matriz[i+1][j+1].minasAdyacentes++
-        this.matriz[i+1][j].minasAdyacentes++
-        this.matriz[i-1][j+1].minasAdyacentes++
-        this.matriz[i-1][j].minasAdyacentes++
-    }
-    else if (j== this.cols-1){
-        this.matriz[i][j-1].minasAdyacentes++
-        this.matriz[i+1][j-1].minasAdyacentes++
-        this.matriz[i+1][j].minasAdyacentes++
-        this.matriz[i-1][j-1].minasAdyacentes++
-        this.matriz[i-1][j].minasAdyacentes++
-    }
-    else{
-        this.matriz[i][j-1].minasAdyacentes++
-        this.matriz[i+1][j-1].minasAdyacentes++
-        this.matriz[i+1][j].minasAdyacentes++
-        this.matriz[i-1][j-1].minasAdyacentes++
-        this.matriz[i-1][j].minasAdyacentes++
-        this.matriz[i][j+1].minasAdyacentes++
-        this.matriz[i+1][j+1].minasAdyacentes++
-        this.matriz[i-1][j+1].minasAdyacentes++
-    }
-}*/
     }
 
 
