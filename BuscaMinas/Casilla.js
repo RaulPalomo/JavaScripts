@@ -8,9 +8,7 @@ class Casilla {
         this.bandera = bandera;
         this.minasAdyacentes = minasAdyacentes;
     }
-    set marca(marcada) {
-        this.marcada = marcada;
-    }
+    
     Revelar() {
 
 

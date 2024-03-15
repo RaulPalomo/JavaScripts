@@ -90,7 +90,7 @@ class Tablero {
                 }
             }
 
-            alert("BOOOOMBAAAAAAAAA")
+            
         }
         else if (this.matriz[i][j].minasAdyacentes == 0) {
             this.matriz[i][j].Revelar()

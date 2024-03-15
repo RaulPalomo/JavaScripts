@@ -32,6 +32,15 @@ document.getElementById("submit").addEventListener("click", function (getTablero
 
 })
 
+document.getElementById("config").addEventListener("click", function(form){
+    
+    if(document.getElementById("form").style.display=="none"){
+        document.getElementById("form").style.display="flex"
+    }
+    else{
+        document.getElementById("form").style.display="none"
+    }
+})
 
 function pintarTablero(tablero) {
     let taula = document.getElementById("taula");

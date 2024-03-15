@@ -3,4 +3,13 @@ div{
     
 }
 
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+.config{
+    width: 30px;
+    height: 30px;
+}
 
