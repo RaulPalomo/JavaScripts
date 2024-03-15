@@ -82,7 +82,7 @@ function pintarTablero(tablero){
 
     }
 
-//event.preventDefault()
+
 }
 function ActualizaTabla(tablero){
     
@@ -91,6 +91,7 @@ function ActualizaTabla(tablero){
             if(tablero.matriz[i][j].revelada==true){
                 if(tablero.matriz[i][j].mina==1){
                     document.getElementById("casilla"+i+"x"+j+"y").style.backgroundColor="red";
+                    document.getElementById("casilla"+i+"x"+j+"y").innerHTML="<img src=\"./img/bomba.png\" width=\"25 px\">"
                 }
                 else if(tablero.matriz[i][j].minasAdyacentes==0){
                     document.getElementById("casilla"+i+"x"+j+"y").style.backgroundColor="lightskyblue";

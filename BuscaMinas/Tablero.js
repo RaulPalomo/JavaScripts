@@ -76,6 +76,19 @@ class Tablero {
         
         
         if (this.matriz[i][j].mina == 1) {
+            this.matriz[i][j].Revelar()
+            for(let x=0;x<this.rows;x++){
+                for(let y=0;y<this.cols;y++){
+                    if(this.matriz[x][y].mina==1){
+                        
+                            this.matriz[x][y].Revelar();
+                            ActualizaTabla(this.matriz);
+                         
+                        
+                    }
+                }
+            }
+            
             alert("BOOOOMBAAAAAAAAA")
         }
         else if (this.matriz[i][j].minasAdyacentes == 0) {
