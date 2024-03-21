@@ -1,5 +1,29 @@
 
-document.getElementById("submit").addEventListener("click", function (getTablero) {
+document.getElementById("formulari").addEventListener("submit", function (getTablero) {
+    event.preventDefault();
+    console.log("de lokoooossss")
+    var nombre = document.getElementById("nombre").value;
+    document.cookie = "nombre=" + nombre + "; path=/";
+    console.log()
+    let cols = document.getElementById("cols").value;
+    let rows = document.getElementById("rows").value;
+    let mines = document.getElementById("mines").value;
+    console.log(document.getElementById("date").value)
+    let date=new Date(document.getElementById("date").getDay())
+    console.log(date.getMonth())
+    let tablero = new Tablero(rows, cols, mines);
+    tablero.colocarBombas();
+    tablero.calcularAdyacentes();
+    pintarTablero(tablero);
+
+
+});
+
+
+/*document.getElementById("submit").addEventListener("click", function (getTablero) {
+    if(document.getElementById("formulari").checkValidity()){
+
+    
     let cols = document.getElementById("cols").value;
     let rows = document.getElementById("rows").value;
     let mines = document.getElementById("mines").value;
@@ -29,18 +53,18 @@ document.getElementById("submit").addEventListener("click", function (getTablero
 
     }
     console.log(correct)
+}
+})*/
 
-})
+document.getElementById("config").addEventListener("click", function (form) {
 
-document.getElementById("config").addEventListener("click", function(form){
-    
-    if(document.getElementById("form").style.display=="none"){
-        document.getElementById("form").style.display="flex"
-        document.getElementById("form").style.width=200+"px"
+    if (document.getElementById("form").style.display == "none") {
+        document.getElementById("form").style.display = "flex"
+        document.getElementById("form").style.width = 200 + "px"
     }
-    else{
-        document.getElementById("form").style.display="none"
-        document.getElementById("form").style.width=25+"px"
+    else {
+        document.getElementById("form").style.display = "none"
+        document.getElementById("form").style.width = 25 + "px"
     }
 })
 
@@ -135,18 +159,18 @@ function ActualizaTabla(tablero) {
 
 function AcabaJuego(countMinas, countReveladas, tablero) {
     if (countMinas > 0) {
-        let msg=document.createElement("div")
-        msg.innerHTML="Has perdido :/, crea otro tablero para jugar"
-        msg.style.textAlign="center"
+        let msg = document.createElement("div")
+        msg.innerHTML = "Has perdido :/, crea otro tablero para jugar"
+        msg.style.textAlign = "center"
         taula.appendChild(msg)
         tablero.finish = true;
         event.preventDefault()
         return true
     }
     else if (countReveladas == tablero.rows * tablero.cols - tablero.mines) {
-        let msg=document.createElement("div")
-        msg.innerHTML="Has Ganado :), crea otro tablero para jugar"
-        msg.style.textAlign="center"
+        let msg = document.createElement("div")
+        msg.innerHTML = "Has Ganado :), crea otro tablero para jugar"
+        msg.style.textAlign = "center"
         taula.appendChild(msg)
         tablero.finish = true;
         event.preventDefault()

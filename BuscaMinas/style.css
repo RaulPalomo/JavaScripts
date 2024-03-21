@@ -1,5 +1,10 @@
 body{
     display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+#joc{
+    display:flex;
     justify-content: center;
 }
 
