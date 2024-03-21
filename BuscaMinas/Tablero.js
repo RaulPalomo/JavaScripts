@@ -81,11 +81,7 @@ class Tablero {
             for (let x = 0; x < this.rows; x++) {
                 for (let y = 0; y < this.cols; y++) {
                     if (this.matriz[x][y].mina == 1) {
-
                         this.matriz[x][y].Revelar();
-                        
-
-
                     }
                 }
             }
