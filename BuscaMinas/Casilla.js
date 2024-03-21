@@ -11,22 +11,17 @@ class Casilla {
     
     Revelar() {
 
-
-        this.revelada = true
+        if(!this.marcada){
+            this.revelada = true;
+        }
+        
 
 
     }
     Marcar() {
         if (this.revelada == false) {
             
-            if (this.marcada == false) {
-                this.marcada = true
-                console.log(this.marcada)
-            }
-            else{
-                this.marcada = false
-                console.log(this.marcada)
-            }
+            this.marcada=!this.marcada;
             
         }
     }
