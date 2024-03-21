@@ -11,7 +11,7 @@ class Casilla {
     
     Revelar() {
 
-
+        
         this.revelada = true
 
 
