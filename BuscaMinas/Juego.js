@@ -36,22 +36,18 @@ document.getElementById("config").addEventListener("click", function(form){
     
     if(document.getElementById("form").style.display=="none"){
         document.getElementById("form").style.display="flex"
+        document.getElementById("form").style.width=200+"px"
     }
     else{
         document.getElementById("form").style.display="none"
+        document.getElementById("form").style.width=25+"px"
     }
 })
 
 function pintarTablero(tablero) {
     let taula = document.getElementById("taula");
     taula.innerHTML = "";
-    //for(let i = hasta tablero.X)
-    //crea en DOm una div
-    //for(j hasta tablero.y)
-    //cre en dom una celda (div)
-    //celda.setAttrubute(coord_x,i)
-    //celda.innerHTML=
-    //celda.addEventListener(clik)
+
     for (let i = 0; i < tablero.rows; i++) {
         let fila = document.createElement("div")
         fila.style.display = "flex";
