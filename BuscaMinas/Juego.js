@@ -2,19 +2,19 @@
 document.getElementById("formulari").addEventListener("submit", function (getTablero) {
     event.preventDefault();
     console.log("de lokoooossss")
-    var nombre = document.getElementById("nombre").value;
-    document.cookie = "nombre=" + nombre + "; path=/";
-    console.log()
+    let correct=true;
     let cols = document.getElementById("cols").value;
     let rows = document.getElementById("rows").value;
     let mines = document.getElementById("mines").value;
+    if(rows*cols<mines){correct=false;alert("No puede haber más minas que casillas!!!")}
     console.log(document.getElementById("date").value)
-    let date=new Date(document.getElementById("date").getDay())
-    console.log(date.getMonth())
-    let tablero = new Tablero(rows, cols, mines);
-    tablero.colocarBombas();
-    tablero.calcularAdyacentes();
-    pintarTablero(tablero);
+    if(correct){
+        let tablero = new Tablero(rows, cols, mines);
+        tablero.colocarBombas();
+        tablero.calcularAdyacentes();
+        pintarTablero(tablero);
+    }
+    
 
 
 });
@@ -80,7 +80,7 @@ function pintarTablero(tablero) {
             celda.style.width = 25 + "px"
             celda.style.height = 25 + "px"
             celda.style.backgroundColor = "green"
-            celda.style.margin = 2 + "px"
+            celda.style.margin = 1 + "px"
             celda.id = "casilla" + i + "x" + j + "y"
             console.log(celda.id)
 
