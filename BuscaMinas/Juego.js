@@ -2,15 +2,14 @@
 document.getElementById("formulari").addEventListener("submit", function (getTablero) {
     event.preventDefault();
     console.log("de lokoooossss")
-    var nombre = document.getElementById("nombre").value;
-    document.cookie = "nombre=" + nombre + "; path=/";
+    
     console.log()
     let cols = document.getElementById("cols").value;
     let rows = document.getElementById("rows").value;
     let mines = document.getElementById("mines").value;
     console.log(document.getElementById("date").value)
-    let date=new Date(document.getElementById("date").getDay())
-    console.log(date.getMonth())
+    
+    
     let tablero = new Tablero(rows, cols, mines);
     tablero.colocarBombas();
     tablero.calcularAdyacentes();
