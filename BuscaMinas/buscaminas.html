@@ -27,15 +27,15 @@
                 <label for="fechaNacimiento">Fecha de nacimiento: </label>
                 <input type="date" id="date"required></input>
                 <label for="nick">Nick: </label>
-                <input id="nick" pattern=".*\d$"title="Tiene que acabar con un entero"required></input>
+                <input id="nick" pattern=".*\d$"title="Tiene que acabar con un número"required></input>
                 <label for="email">Correo electrónico: </label>
                 <input type="email" id="email" pattern=".+@itb\.cat" title="Debe ser un correo itb"required></input>
                 <label for="cols">Columnas: </label>
-                <input id="cols" pattern="^([1-4]?\d|50)$"title="Tiene que ser un entero menor o igual a 50" required></input>
+                <input id="cols" pattern="^([1-4]?\d|50)$"title="Tiene que ser un número menor o igual a 50" required></input>
                 <label for="rows">Filas: </label>
-                <input id="rows"pattern="^([1-4]?\d|50)$"title="Tiene que ser un entero menor o igual a 50" required></input>
+                <input id="rows"pattern="^([1-4]?\d|50)$"title="Tiene que ser un número menor o igual a 50" required></input>
                 <label for="mines">Minas: </label>
-                <input id="mines"pattern="[0-9]+"title="Tiene que ser un entero"required></input>
+                <input id="mines"pattern="[0-9]+"title="Tiene que ser un número mayor a 0"required></input>
                 <input id="submit" type="submit" value="Crea Tablero">
             </form>
         </div>

@@ -31,6 +31,7 @@ document.getElementById("formulari").addEventListener("submit", function (getTab
         edad--;
     }
     if (edad < 18) { correct = false; alert("Tienes que ser mayor de edad"); }
+    if (mines==0) { correct = false; alert("No puedes jugar al buscaminas sin minas (>_<)"); }
     if (correct) {
         let tablero = new Tablero(rows, cols, mines);
         tablero.colocarBombas();
