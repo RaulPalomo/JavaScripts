@@ -16,7 +16,6 @@ class Casilla {
         }
         
 
-
     }
     Marcar() {
         if (this.revelada == false) {

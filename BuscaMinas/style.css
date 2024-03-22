@@ -1,15 +1,26 @@
-div{
+body{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+#joc{
+    display:flex;
     justify-content: center;
-    
 }
 
 .form{
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 20%;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 .config{
     width: 30px;
     height: 30px;
 }
+
 
