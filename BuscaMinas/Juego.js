@@ -51,42 +51,6 @@ document.getElementById("formulari").addEventListener("submit", function (getTab
 });
 
 
-/*document.getElementById("submit").addEventListener("click", function (getTablero) {
-    if(document.getElementById("formulari").checkValidity()){
-
-    
-    let cols = document.getElementById("cols").value;
-    let rows = document.getElementById("rows").value;
-    let mines = document.getElementById("mines").value;
-    let toValidate = cols + rows + mines;
-    let correct = true;
-    let ABC = "qwertyuiopasdfghjklñzxcvbnmç?¡¿'^`*+[]{}¨´-_:;/()$%&·#!"
-    toValidate = toValidate.toLowerCase();
-    for (let i = 0; i < toValidate.length; i++) {
-        if(cols==0||rows==0||mines==0){
-            correct = false;
-        }
-        if (ABC.includes(toValidate[i])) {
-
-            correct = false;
-
-        }
-    }
-    if (!correct) {
-        alert("Los campos no pueden ser nulos ni permiten letras o caràcteres especiales")
-
-    }
-    else {
-        let tablero = new Tablero(rows, cols, mines);
-        tablero.colocarBombas();
-        tablero.calcularAdyacentes();
-        pintarTablero(tablero);
-
-    }
-    console.log(correct)
-}
-})*/
-
 document.getElementById("config").addEventListener("click", function (form) {
 
     if (document.getElementById("form").style.display == "none") {
