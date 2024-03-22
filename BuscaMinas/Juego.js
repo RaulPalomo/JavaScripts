@@ -1,20 +1,51 @@
-
+document.addEventListener("DOMContentLoaded",()=>{
+    document.getElementById("form").style.display="flex";
+    document.getElementById("form").style.width = 200 + "px"
+    if (document.cookie.includes("jugadorInfo")) {
+        jugadorJson=document.cookie.substring(12)
+        let jugador= JSON.parse(jugadorJson)
+        console.log(jugador)
+        let date= jugador.fechanacimento.substring(0,10)
+        document.getElementById("cols").value=jugador.columnas;
+        document.getElementById("rows").value=jugador.filas;
+        document.getElementById("mines").value=jugador.minas;
+        document.getElementById("apellido").value=jugador.apellido;
+        document.getElementById("nick").value=jugador.nick;
+        document.getElementById("email").value=jugador.mail;
+        document.getElementById("date").value=date;
+        document.getElementById("nombre").value=jugador.nombre;
+    }
+        
+});
 document.getElementById("formulari").addEventListener("submit", function (getTablero) {
     event.preventDefault();
-    console.log("de lokoooossss")
-    let correct=true;
+    let correct = true;
     let cols = document.getElementById("cols").value;
     let rows = document.getElementById("rows").value;
     let mines = document.getElementById("mines").value;
-    if(rows*cols<mines){correct=false;alert("No puede haber más minas que casillas!!!")}
-    console.log(document.getElementById("date").value)
-    if(correct){
+    if (rows * cols < mines) { correct = false; alert("No puede haber más minas que casillas!!!") }
+    const fechaNacimiento = new Date(document.getElementById("date").value);
+    const fechaActual = new Date();
+    let edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
+    if (fechaActual.getMonth() < fechaNacimiento.getMonth() || (fechaActual.getMonth() === fechaNacimiento.getMonth() && fechaActual.getDate() < fechaNacimiento.getDate())) {
+        edad--;
+    }
+    if (edad < 18) { correct = false; alert("Tienes que ser mayor de edad"); }
+    if (correct) {
         let tablero = new Tablero(rows, cols, mines);
         tablero.colocarBombas();
         tablero.calcularAdyacentes();
         pintarTablero(tablero);
+        let nom=document.getElementById("nombre").value;
+        let apellido=document.getElementById("apellido").value;
+        let nick=document.getElementById("nick").value;
+        let email=document.getElementById("email").value;
+        let jugador = new Jugador(nom, apellido,fechaNacimiento,nick,email,rows,cols,mines);
+        
+        const jugadorInfo = JSON.stringify(jugador);
+        document.cookie = `jugadorInfo=${jugadorInfo}; expires=Wed, 16 Apr 2025 12:00:00 UTC; path=/`;
     }
-    
+
 
 
 });
@@ -80,7 +111,7 @@ function pintarTablero(tablero) {
             celda.style.width = 25 + "px"
             celda.style.height = 25 + "px"
             celda.style.backgroundColor = "green"
-            celda.style.margin = 1 + "px"
+            celda.style.margin = 0.5 + "px"
             celda.id = "casilla" + i + "x" + j + "y"
             console.log(celda.id)
 

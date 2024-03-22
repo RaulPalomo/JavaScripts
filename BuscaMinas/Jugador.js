@@ -9,7 +9,5 @@ class Jugador{
         this.columnas=columnas
         this.minas=minas
     }
-    CalcEdad(){
-        
-    }
-}
+
+};
